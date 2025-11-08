@@ -301,10 +301,10 @@ services:
       - start
     healthcheck:
       test: ["CMD-SHELL", "exec 3<>/dev/tcp/127.0.0.1/${HTTP_PORT};echo -e 'GET /health/ready HTTP/1.1\r\nhost: 127.0.0.1\r\nConnection: close\r\n\r\n' >&3;grep 'HTTP/1.1 200 OK' <&3"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 90s
+      interval: 60s
+      timeout: 30s
+      retries: 5
+      start_period: 120s
 
 networks:
   keycloak-network:
