@@ -155,11 +155,12 @@ fi
 
 # Create directories
 print_info "Creating directories..."
-mkdir -p "${DATA_DIR}"/{postgres,keycloak,tmp}
+mkdir -p "${DATA_DIR}"/{postgres,keycloak}
+mkdir -p "${DATA_DIR}/keycloak/tmp"  # Temporary directory required by Keycloak
 mkdir -p "${CONFIG_DIR}"
 chmod 755 "${INSTALL_DIR}"
 chmod 755 "${DATA_DIR}"
-chmod 777 "${DATA_DIR}/tmp"  # Temporary directory needs to be writable by Keycloak container
+chmod 777 "${DATA_DIR}/keycloak/tmp"  # Temporary directory needs to be writable by Keycloak container
 
 # Generate secure passwords and secrets
 print_info "Generating secure passwords and secrets..."
@@ -220,6 +221,7 @@ PROXY_ADDRESS_FORWARDING=true
 KC_HOSTNAME=${DOMAIN}
 KC_HOSTNAME_STRICT=false
 KC_HOSTNAME_STRICT_HTTPS=false
+KC_HOSTNAME_PORT=443
 KC_HTTP_ENABLED=true
 KC_HEALTH_ENABLED=true
 KC_METRICS_ENABLED=true
@@ -275,6 +277,7 @@ services:
       KC_HOSTNAME: ${KC_HOSTNAME}
       KC_HOSTNAME_STRICT: ${KC_HOSTNAME_STRICT}
       KC_HOSTNAME_STRICT_HTTPS: ${KC_HOSTNAME_STRICT_HTTPS}
+      KC_HOSTNAME_PORT: ${KC_HOSTNAME_PORT:-443}
 
       # HTTP configuration
       KC_HTTP_ENABLED: ${KC_HTTP_ENABLED}
