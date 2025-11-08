@@ -40,14 +40,14 @@ Ce projet fournit un script d'installation automatique pour déployer Keycloak, 
 ### Installation de test (localhost)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/tiagomatiastm-prog/keycloak-installer/main/install-keycloak.sh | sudo bash
+curl -fsSL https://raw.githubusercontent.com/tiagomatiastm-prog/keycloak-installer/master/install-keycloak.sh | sudo bash
 ```
 
 ### Installation personnalisée
 
 ```bash
 # Télécharger le script
-curl -fsSL -O https://raw.githubusercontent.com/tiagomatiastm-prog/keycloak-installer/main/install-keycloak.sh
+curl -fsSL -O https://raw.githubusercontent.com/tiagomatiastm-prog/keycloak-installer/master/install-keycloak.sh
 chmod +x install-keycloak.sh
 
 # Installation avec domaine personnalisé

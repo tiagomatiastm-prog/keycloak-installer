@@ -75,7 +75,7 @@ Créez le fichier `deploy-keycloak.yml` :
   hosts: keycloak_servers
   become: yes
   vars:
-    script_url: "https://raw.githubusercontent.com/tiagomatiastm-prog/keycloak-installer/main/install-keycloak.sh"
+    script_url: "https://raw.githubusercontent.com/tiagomatiastm-prog/keycloak-installer/master/install-keycloak.sh"
     install_script: "/tmp/install-keycloak.sh"
 
   tasks:
