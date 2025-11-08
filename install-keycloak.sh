@@ -155,10 +155,11 @@ fi
 
 # Create directories
 print_info "Creating directories..."
-mkdir -p "${DATA_DIR}"/{postgres,keycloak}
+mkdir -p "${DATA_DIR}"/{postgres,keycloak,tmp}
 mkdir -p "${CONFIG_DIR}"
 chmod 755 "${INSTALL_DIR}"
 chmod 755 "${DATA_DIR}"
+chmod 777 "${DATA_DIR}/tmp"  # Temporary directory needs to be writable by Keycloak container
 
 # Generate secure passwords and secrets
 print_info "Generating secure passwords and secrets..."
@@ -281,6 +282,7 @@ services:
 
       # Proxy configuration
       KC_PROXY: edge
+      KC_PROXY_HEADERS: xforwarded
 
       # Observability
       KC_HEALTH_ENABLED: ${KC_HEALTH_ENABLED}
